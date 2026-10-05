@@ -1,0 +1,989 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AIAIAIAI — Applied Initiative for Artificial Intelligence</title>
+  <meta name="description" content="Applied Initiative for Artificial Intelligence Applications & Implementations in Analytics & Integration. Automation • Innovation • Academia • Institutions.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="theme-color" content="#f5f4ef">
+  <style>
+    :root{
+      --bg:#f5f4ef;
+      --ink:#111210;
+      --muted:#696a65;
+      --line:#d3d3cc;
+      --panel:#fffefa;
+      --soft:#ebeae4;
+      --deep:#141512;
+      --max:1180px;
+      --r:2px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height:1.45;
+      -webkit-font-smoothing:antialiased;
+    }
+    button,input,textarea{font:inherit}
+    button{color:inherit}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max);margin:auto;padding:0 28px}
+    .mono{font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace}
+    .eyebrow,.meta{
+      font-size:12px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted)
+    }
+
+
+    .institution-ribbon{
+      background:#0d0e0c;
+      border-bottom:1px solid #292a27;
+      color:#b3b5ad;
+      font:10.5px "SFMono-Regular",Consolas,"Liberation Mono",monospace;
+      letter-spacing:.065em;
+      text-transform:uppercase;
+    }
+    .institution-ribbon .ribbon-inner{
+      max-width:var(--max);
+      margin:auto;
+      padding:9px 28px;
+      display:flex;
+      justify-content:space-between;
+      gap:28px;
+      align-items:center;
+    }
+
+    nav{
+      position:sticky;top:0;z-index:40;
+      backdrop-filter:blur(12px);
+      background:rgba(245,244,239,.9);
+      border-bottom:1px solid var(--line);
+    }
+    nav .inner{
+      max-width:var(--max);margin:auto;padding:15px 28px;
+      display:flex;align-items:center;justify-content:space-between;gap:24px
+    }
+    .brand{font-weight:850;letter-spacing:-.045em;font-size:21px}
+    .navlinks{display:flex;gap:20px;font-size:13px;color:var(--muted)}
+    .navlinks a:hover{color:var(--ink)}
+
+    .hero{padding:92px clamp(18px,3.2vw,42px) 76px}
+    .hero-kicker{display:flex;justify-content:space-between;gap:24px;align-items:center}
+    h1{
+      font-size:clamp(68px,14.7vw,184px);
+      line-height:.82;letter-spacing:-.09em;margin:28px 0 42px;
+      font-weight:900;white-space:nowrap
+    }
+    h1 .ai1{color:#aaa89f}
+    h1 .ai2{color:#817f77}
+    h1 .ai3{color:#56544e}
+    h1 .ai4{color:#111210}
+    .hero-grid{
+      display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:start;
+      border-top:1px solid var(--line);padding-top:28px
+    }
+    .descriptor{
+      font-size:clamp(24px,3.35vw,44px);line-height:1.03;
+      letter-spacing:-.045em;max-width:760px
+    }
+    .pillrow{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+    .pill{border:1px solid var(--ink);border-radius:999px;padding:8px 12px;font-size:13px}
+    .mission{
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(19px,2vw,27px);line-height:1.38;color:#232420;
+      max-width:540px;padding-left:24px;border-left:3px solid var(--ink)
+    }
+
+    section{padding:88px 0;border-top:1px solid var(--line);scroll-margin-top:54px}
+    .section-head{
+      display:grid;grid-template-columns:.33fr 1fr;gap:36px;margin-bottom:48px;align-items:start
+    }
+    h2{
+      margin:0;font-size:clamp(38px,5.2vw,70px);letter-spacing:-.058em;
+      line-height:.96;font-weight:700
+    }
+    .lede{font-size:21px;max-width:830px;color:#30312e;margin:0}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{
+      background:var(--panel);border:1px solid var(--line);
+      min-height:240px;padding:26px;display:flex;flex-direction:column;justify-content:space-between
+    }
+    .card h3{font-size:22px;letter-spacing:-.025em;margin:0 0 14px}
+    .card p{margin:0;color:var(--muted)}
+
+    /* Interactive maturity framework */
+    .framework-shell{
+      background:var(--deep);color:#f0efe9;padding:56px;border-radius:var(--r)
+    }
+    .framework-shell .eyebrow{color:#96978f}
+    .framework-shell h2{max-width:900px}
+    .framework-intro{
+      max-width:720px;color:#bdbeb7;font-size:18px;margin:18px 0 40px
+    }
+    .stage-tabs{
+      display:grid;grid-template-columns:repeat(7,minmax(0,1fr));
+      border-top:1px solid #4a4b46
+    }
+    .stage-tab{
+      appearance:none;background:none;border:0;border-right:1px solid #363732;
+      border-bottom:1px solid #363732;padding:18px 13px 20px;text-align:left;
+      min-height:126px;cursor:pointer;color:#85867f;position:relative
+    }
+    .stage-tab:first-child{border-left:1px solid #363732}
+    .stage-tab:hover,.stage-tab:focus-visible{color:#fff}
+    .stage-tab.active{background:#1c1d19;color:#fff}
+    .stage-tab.active:before{
+      content:"";position:absolute;top:-2px;left:0;right:0;height:3px;background:#eeede7
+    }
+    .stage-tab .num{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#70716b}
+    .stage-tab .name{font-size:14px;font-weight:650;line-height:1.2;display:block;margin-top:12px}
+    .stage-panel{
+      display:grid;grid-template-columns:1.05fr .95fr;gap:52px;
+      padding-top:44px;margin-top:34px;border-top:1px solid #373832;align-items:start
+    }
+    .stage-panel h3{
+      font-size:clamp(34px,4.5vw,58px);letter-spacing:-.045em;line-height:1;margin:10px 0 20px
+    }
+    .stage-desc{font-size:19px;line-height:1.55;color:#d0d1ca;margin:0}
+    .stage-exit{
+      margin-top:26px;border-top:1px solid #363732;padding-top:18px;
+      display:grid;grid-template-columns:130px 1fr;gap:16px;color:#bbbcb5
+    }
+    .formula-box{
+      border:1px solid #484943;background:#191a17;padding:22px;
+      font-family:"SFMono-Regular",Consolas,monospace
+    }
+    .formula-label{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:#777971}
+    .formula{font-size:clamp(18px,2vw,25px);margin:20px 0 14px;line-height:1.45}
+    .metric{font-size:12px;color:#90918a;border-top:1px solid #363732;padding-top:14px}
+    .framework-quote{
+      margin:40px 0 0;font-family:Georgia,serif;font-size:clamp(28px,3.3vw,46px);
+      line-height:1.14;letter-spacing:-.025em
+    }
+
+    /* Insight flip cards */
+    .insights-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .flip{perspective:1200px;min-height:210px;cursor:pointer}
+    .flip-inner{
+      position:relative;width:100%;height:100%;min-height:210px;transition:transform .55s cubic-bezier(.2,.7,.2,1);
+      transform-style:preserve-3d
+    }
+    .flip.is-flipped .flip-inner{transform:rotateY(180deg)}
+    .flip-face{
+      position:absolute;inset:0;backface-visibility:hidden;
+      border-top:1px solid var(--ink);padding:20px 6px 26px 0;
+      display:flex;flex-direction:column;justify-content:space-between;background:var(--bg)
+    }
+    .flip-back{transform:rotateY(180deg);background:var(--ink);color:#f4f3ed;padding:26px;justify-content:center}
+    .flip h3{font-size:clamp(25px,2.6vw,34px);line-height:1.05;letter-spacing:-.035em;margin:0}
+    .flip small{color:var(--muted)}
+    .flip-back small{color:#aaa}
+    .flip-back p{font-size:18px;line-height:1.5;max-width:620px;margin:0;color:#e2e1da}
+    .flip-hint{font-size:12px;color:var(--muted)}
+
+    /* Transformation framework */
+    .methodology-title{margin:0 0 42px}
+    .methodology-title .meta{margin-bottom:14px}
+    .methodology-title h3{
+      margin:0;
+      max-width:1080px;
+      font-size:clamp(30px,3.6vw,48px);
+      line-height:1.02;
+      letter-spacing:-.04em;
+      font-weight:650
+    }
+    .transformation-grid{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) auto;
+      gap:64px;
+      align-items:center
+    }
+    .method-copy{font-size:20px;line-height:1.55;color:#343530;max-width:650px}
+    .loopchart{
+      width:min(100%,420px);
+      justify-self:end;
+      background:var(--panel);
+      border:1px solid var(--line);
+      padding:16px
+    }
+    .loopchart svg{width:100%;height:auto;display:block}
+    .loop-grid{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+      border:1px solid var(--line);margin-top:34px
+    }
+    .loop-step{background:var(--panel);padding:22px;min-height:160px}
+    .loop-step b{display:block;margin-bottom:12px}
+    .loop-step p{margin:0;color:var(--muted);font-size:14px}
+
+    /* Principles */
+    .principles{background:#ebeae4}
+    .principle-list{list-style:none;padding:0;margin:0;border-top:1px solid var(--ink)}
+    .principle-list li{
+      display:grid;grid-template-columns:64px 1fr;gap:24px;padding:20px 0;border-bottom:1px solid var(--line);
+      font-size:clamp(20px,2.4vw,31px);letter-spacing:-.025em
+    }
+    .principle-list span{font:11px "SFMono-Regular",Consolas,monospace;color:var(--muted);padding-top:8px}
+
+    /* Contact / AI responder */
+    .contact-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:64px;align-items:start}
+    .contact-note{font-size:20px;color:#343530;max-width:430px}
+    .message-box{border:1px solid var(--ink);background:var(--panel);padding:24px}
+    .message-box input[type="email"]{
+      width:100%;
+      border:0;
+      border-bottom:1px solid var(--line);
+      background:transparent;
+      padding:0 0 14px;
+      margin:8px 0 24px;
+      outline:none;
+      font-size:17px
+    }
+    .message-box textarea{
+      width:100%;min-height:120px;resize:vertical;border:0;border-bottom:1px solid var(--line);
+      background:transparent;padding:0 0 16px;outline:none;font-size:17px
+    }
+    .actions{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-top:18px}
+    .btn{
+      border:1px solid var(--ink);background:var(--ink);color:#fff;padding:11px 16px;cursor:pointer
+    }
+    .btn:hover{background:#2a2b27}
+    .tiny{font-size:11px;color:var(--muted)}
+
+    /* FAQ */
+    .faq{max-width:920px}
+    details{border-top:1px solid var(--line);padding:21px 0}
+    details:last-child{border-bottom:1px solid var(--line)}
+    summary{cursor:pointer;font-size:20px;font-weight:650;list-style:none}
+    summary::-webkit-details-marker{display:none}
+    details p{color:var(--muted);max-width:780px}
+
+    /* Footer — institutional dark colophon */
+    footer{
+      background:#0d0e0c;
+      color:#f0efe9;
+      padding:58px 0 28px;
+      border-top:1px solid #0d0e0c;
+      font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace
+    }
+    .footer-colophon{
+      display:grid;
+      grid-template-columns:1.65fr .7fr .9fr;
+      gap:64px;
+      align-items:start
+    }
+    .footer-mark{
+      margin:0 0 17px;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      font-size:clamp(46px,7.3vw,88px);
+      font-weight:900;
+      line-height:.85;
+      letter-spacing:-.075em;
+      width:max-content;
+      max-width:100%
+    }
+    .footer-mark .fai1{color:#666861}
+    .footer-mark .fai2{color:#85877f}
+    .footer-mark .fai3{color:#a7a89f}
+    .footer-mark .fai4{color:#cbc9bf}
+    .footer-name{
+      max-width:560px;
+      color:#bebfb7;
+      font:12px/1.65 "SFMono-Regular",Consolas,"Liberation Mono",monospace;
+      letter-spacing:.015em
+    }
+    .footer-scope{
+      margin-top:16px;
+      font:10.5px "SFMono-Regular",Consolas,monospace;
+      color:#92948c;
+      line-height:1.8;
+      letter-spacing:.04em;
+      text-transform:uppercase
+    }
+    .footer-title{
+      margin:3px 0 16px;
+      color:#f0efe9;
+      font:10.5px "SFMono-Regular",Consolas,monospace;
+      text-transform:uppercase;
+      letter-spacing:.11em
+    }
+    .footer-directory{
+      list-style:none;
+      padding:0;
+      margin:0
+    }
+    .footer-directory li{margin:0 0 10px}
+    .footer-directory a{
+      color:#a9aba3;
+      font:12px "SFMono-Regular",Consolas,monospace;
+      transition:color .15s ease
+    }
+    .footer-directory a:hover{color:#f0efe9}
+    .system-lines{
+      color:#a1a39b;
+      font:10.5px "SFMono-Regular",Consolas,monospace;
+      line-height:1.75
+    }
+    .system-lines div{white-space:normal}
+    .footer-rule{
+      border-top:1px solid #292a27;
+      margin-top:48px;
+      padding-top:24px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:30px;
+      flex-wrap:wrap;
+      color:#85877f;
+      font:10.5px "SFMono-Regular",Consolas,monospace;
+      letter-spacing:.035em;
+      text-transform:uppercase
+    }
+    .footer-rule strong{color:#b8bab1;font-weight:600}
+
+    /* Floating chat */
+    .chat-launch{
+      position:fixed;right:22px;bottom:22px;z-index:60;
+      width:52px;height:52px;border:1px solid var(--ink);border-radius:50%;
+      background:var(--bg);cursor:pointer;font-weight:800;box-shadow:0 8px 28px rgba(0,0,0,.08)
+    }
+    .chat-panel{
+      position:fixed;right:22px;bottom:86px;z-index:60;width:min(390px,calc(100vw - 32px));
+      border:1px solid var(--ink);background:var(--panel);display:none;box-shadow:0 18px 60px rgba(0,0,0,.12)
+    }
+    .chat-panel.open{display:block}
+    .chat-head{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid var(--line)}
+    .chat-head strong{font-size:14px}
+    .chat-close{border:0;background:none;cursor:pointer;font-size:20px}
+    .chat-log{height:310px;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:12px}
+    .bubble{max-width:88%;padding:10px 12px;border:1px solid var(--line);font-size:14px}
+    .bubble.me{align-self:flex-end;background:var(--ink);color:#fff;border-color:var(--ink)}
+    .bubble.bot{align-self:flex-start;background:#f3f2ed}
+    .chat-input{display:flex;border-top:1px solid var(--line)}
+    .chat-input input{flex:1;border:0;background:transparent;padding:13px 14px;outline:none}
+    .chat-input button{border:0;border-left:1px solid var(--line);background:transparent;padding:0 15px;cursor:pointer;font-weight:700}
+
+    @media(max-width:980px){
+      .hero-grid,.section-head,.transformation-grid,.contact-grid,.footer-grid,.stage-panel{grid-template-columns:1fr}
+      .stage-tabs{grid-template-columns:repeat(4,1fr)}
+      .grid-3{grid-template-columns:1fr}
+      .loop-grid{grid-template-columns:1fr 1fr}
+      .system-meta{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:680px){
+      .wrap{padding:0 18px}
+      .institution-ribbon .ribbon-inner{padding:8px 18px;align-items:flex-start;flex-direction:column;gap:3px}
+      .footer-colophon{grid-template-columns:1fr;gap:36px}
+      nav .inner{padding:14px 18px}
+      .navlinks{display:none}
+      .hero{padding:68px 0 52px}
+      h1{font-size:22.6vw}
+      .hero-kicker{align-items:flex-start;flex-direction:column;gap:6px}
+      .insights-grid{grid-template-columns:1fr}
+      .stage-tabs{grid-template-columns:1fr 1fr}
+      .framework-shell{padding:28px 20px}
+      .loopchart{width:100%;max-width:440px;justify-self:stretch;margin-inline:auto}
+      .loop-grid{grid-template-columns:1fr}
+      .stage-exit{grid-template-columns:1fr}
+      .chat-launch{right:14px;bottom:14px}
+      .chat-panel{right:16px;bottom:78px}
+    }
+  </style>
+</head>
+<body>
+  <div class="institution-ribbon">
+    <div class="ribbon-inner">
+      <span>Version 1.0 (supersedes Version 1.0) • Status: Final Draft, Final — final</span>
+      <span>No cookies harvested • Zero client solicitation</span>
+    </div>
+  </div>
+  <nav>
+    <div class="inner">
+      <a class="brand" href="#top">AIAIAIAI</a>
+      <div class="navlinks">
+        <a href="#about">About</a>
+        <a href="#framework">Framework</a>
+        <a href="#insights">Insights</a>
+        <a href="#methodology">Methodology</a>
+        <a href="#principles">Principles</a>
+        <a href="#inquiry">Inquiry</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <div class="wrap hero">
+      <div class="hero-kicker">
+        <div class="eyebrow">Independent research & experimental initiative</div>
+        <div class="eyebrow mono">Automation • Innovation • Academia • Institutions</div>
+      </div>
+
+      <h1 aria-label="AIAIAIAI">
+        <span class="ai1">AI</span><span class="ai2">AI</span><span class="ai3">AI</span><span class="ai4">AI</span>
+      </h1>
+
+      <div class="hero-grid">
+        <div>
+          <div class="descriptor">
+            Applied Initiative for Artificial Intelligence Applications &amp; Implementations in Analytics &amp; Integration
+          </div>
+          <div class="pillrow">
+            <span class="pill">Automation</span>
+            <span class="pill">Innovation</span>
+            <span class="pill">Academia</span>
+            <span class="pill">Institutions</span>
+          </div>
+        </div>
+        <div class="mission">
+          Our mission is to accelerate AI-driven intelligent AI transformation by deploying AI-enabled AI models across AI-ready workflows, creating a sustainable AI foundation for the next generation of AI-powered AI.
+        </div>
+      </div>
+    </div>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">01 — About</div>
+          <div>
+            <h2>Intelligence, applied recursively.</h2>
+            <p class="lede" style="margin-top:24px">
+              AIAIAIAI explores artificial intelligence, analytics, automation, institutional systems, and the increasingly recursive application of AI to AI.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <div>
+              <div class="meta">A</div>
+              <h3>Applied systems thinking</h3>
+              <p>Turning workflows, constraints, incentives, and strategic ambitions into systems that can actually be examined.</p>
+            </div>
+          </article>
+          <article class="card">
+            <div>
+              <div class="meta">I</div>
+              <h3>Intelligent implementation</h3>
+              <p>Studying what happens between saying “we should use AI” and discovering that nobody knows what the workflow is.</p>
+            </div>
+          </article>
+          <article class="card">
+            <div>
+              <div class="meta">AI</div>
+              <h3>Artificial Intelligence Intellect</h3>
+              <p>Applying intelligence to artificial intelligence so artificial intelligence can be applied with greater intelligence.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="framework">
+      <div class="wrap">
+        <div class="framework-shell">
+          <div class="eyebrow">02 — The AIAIAIAI Framework™</div>
+          <h2 style="margin-top:18px">From AI readiness to AI-enabled readiness for AI.</h2>
+          <p class="framework-intro">A seven-stage maturity sequence for organizations prepared to improve their readiness for readiness.</p>
+
+          <div class="stage-tabs" id="stageTabs" aria-label="AIAIAIAI maturity stages"></div>
+
+          <div class="stage-panel" aria-live="polite">
+            <div>
+              <div class="meta" id="stageCode" style="color:#8d8e87">Stage 01 of 07</div>
+              <h3 id="stageTitle">AI Readiness</h3>
+              <p class="stage-desc" id="stageDescription"></p>
+              <div class="stage-exit">
+                <div class="meta" style="color:#898a84">Exit criterion</div>
+                <div id="stageExit"></div>
+              </div>
+            </div>
+            <div class="formula-box">
+              <div class="formula-label">Mathematical formalization</div>
+              <div class="formula" id="stageFormula"></div>
+              <div class="metric" id="stageMetric"></div>
+            </div>
+          </div>
+
+          <div class="framework-quote">“The system is finally prepared for more AI.”</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="insights">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">03 — Selected Insights</div>
+          <div>
+            <h2>Questions the industry may eventually regret asking.</h2>
+            <p class="lede" style="margin-top:24px">Working questions, not publication claims. Select a card to turn it over.</p>
+          </div>
+        </div>
+
+        <div class="insights-grid" id="insightGrid">
+          <article class="flip" tabindex="0" role="button" aria-pressed="false">
+            <div class="flip-inner">
+              <div class="flip-face">
+                <div><small>Readiness / Working question</small><h3>Is Your AI Ready for AI?</h3></div>
+                <div class="flip-hint">Turn over →</div>
+              </div>
+              <div class="flip-face flip-back">
+                <p>Before deploying AI, assess whether the AI environment is sufficiently AI-ready to evaluate the readiness of the AI being deployed.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="flip" tabindex="0" role="button" aria-pressed="false">
+            <div class="flip-inner">
+              <div class="flip-face">
+                <div><small>Strategy / Working question</small><h3>Toward an AI-Native Framework for AI Frameworks</h3></div>
+                <div class="flip-hint">Turn over →</div>
+              </div>
+              <div class="flip-face flip-back">
+                <p>A framework for determining whether existing AI frameworks possess sufficient AI-native characteristics to remain valid in an AI-native framework environment.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="flip" tabindex="0" role="button" aria-pressed="false">
+            <div class="flip-inner">
+              <div class="flip-face">
+                <div><small>Research / Working question</small><h3>The Artificial Intelligence Intelligence Gap</h3></div>
+                <div class="flip-hint">Turn over →</div>
+              </div>
+              <div class="flip-face flip-back">
+                <p>The distance between having artificial intelligence and having enough intelligence to know what to do with artificial intelligence.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="flip" tabindex="0" role="button" aria-pressed="false">
+            <div class="flip-inner">
+              <div class="flip-face">
+                <div><small>Transformation / Working question</small><h3>Why Your AI Transformation Needs an AI Transformation</h3></div>
+                <div class="flip-hint">Turn over →</div>
+              </div>
+              <div class="flip-face flip-back">
+                <p>Once the AI transformation begins transforming the organization, the transformation itself becomes a candidate for transformation.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="flip" tabindex="0" role="button" aria-pressed="false">
+            <div class="flip-inner">
+              <div class="flip-face">
+                <div><small>Measurement / Working question</small><h3>Measuring AI Readiness Readiness</h3></div>
+                <div class="flip-hint">Turn over →</div>
+              </div>
+              <div class="flip-face flip-back">
+                <p>A readiness assessment cannot be considered ready until the readiness of the readiness assessment has itself been assessed.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="flip" tabindex="0" role="button" aria-pressed="false">
+            <div class="flip-inner">
+              <div class="flip-face">
+                <div><small>Governance / Working question</small><h3>Human-in-the-Loop-in-the-Loop</h3></div>
+                <div class="flip-hint">Turn over →</div>
+              </div>
+              <div class="flip-face flip-back">
+                <p>The first loop supervises AI. The second loop supervises whether the first loop is supervising AI correctly. Governance improves with each additional loop.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="methodology">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">04 — Institutional Methodology</div>
+          <div><h2>Transformation, transformed.</h2></div>
+        </div>
+
+        <div class="methodology-title">
+          <div class="meta">Proprietary canon</div>
+          <h3>The AI Transformation Transformation Framework™</h3>
+        </div>
+
+        <div class="transformation-grid">
+          <div>
+            <p class="method-copy">
+              AI transformation transforms not only technologies, but the transformative processes through which organizations transform them.
+            </p>
+            <p class="method-copy">
+              AIAIAIAI aligns strategic AI intent with AI-enabled transformation capabilities through an iterative AI transformation layer designed to continuously transform the organization’s approach to transformation itself.
+            </p>
+            <p class="method-copy" style="font-family:Georgia,serif;font-size:24px">
+              “Transformation without transformation transformation is merely accelerated operational inertia.”
+            </p>
+          </div>
+
+          <div class="loopchart">
+            <div class="meta" style="display:flex;justify-content:space-between"><span>System dynamics</span><span>Cycle: stable</span></div>
+            <svg viewBox="0 0 440 380" aria-label="Closed-loop AI Transformation Transformation diagram">
+              <defs>
+                <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#2a2b27"></path>
+                </marker>
+              </defs>
+              <circle cx="220" cy="190" r="125" fill="none" stroke="#d3d3cc" stroke-width="1.3" stroke-dasharray="5 5"/>
+              <path d="M220 65 A125 125 0 0 1 345 190" fill="none" stroke="#2a2b27" stroke-width="2" marker-end="url(#arr)"/>
+              <path d="M345 190 A125 125 0 0 1 220 315" fill="none" stroke="#2a2b27" stroke-width="2" marker-end="url(#arr)"/>
+              <path d="M220 315 A125 125 0 0 1 95 190" fill="none" stroke="#2a2b27" stroke-width="2" marker-end="url(#arr)"/>
+              <path d="M95 190 A125 125 0 0 1 215 65" fill="none" stroke="#2a2b27" stroke-width="2" marker-end="url(#arr)"/>
+
+              <g font-family="Arial,sans-serif" font-size="11" fill="#111210" text-anchor="middle">
+                <rect x="160" y="45" width="120" height="40" fill="#fffefa" stroke="#bfc0b9"/><text x="220" y="70">DISCOVER</text>
+                <rect x="300" y="170" width="120" height="40" fill="#fffefa" stroke="#bfc0b9"/><text x="360" y="195">ALIGN</text>
+                <rect x="160" y="295" width="120" height="40" fill="#fffefa" stroke="#bfc0b9"/><text x="220" y="320">TRANSFORM</text>
+                <rect x="20" y="170" width="120" height="40" fill="#fffefa" stroke="#bfc0b9"/><text x="80" y="195">REASSESS</text>
+                <circle cx="220" cy="190" r="38" fill="#ebeae4" stroke="#111210" stroke-width="1.4"/>
+                <text x="220" y="188" font-family="Georgia,serif" font-size="18">Δ² AI</text>
+                <text x="220" y="205" font-family="monospace" font-size="9" fill="#696a65">RECURSION</text>
+              </g>
+            </svg>
+            <div class="tiny mono" style="text-align:center">FIG 4.1 — CLOSED LOOP AI TRANSFORMATION TRANSFORMATION STATE</div>
+          </div>
+        </div>
+
+        <div class="loop-grid">
+          <div class="loop-step"><b>1. Discover</b><p>Identify where AI could identify additional opportunities for AI.</p></div>
+          <div class="loop-step"><b>2. Align</b><p>Align AI priorities with the priorities generated by previous AI alignment.</p></div>
+          <div class="loop-step"><b>3. Transform</b><p>Transform AI transformation into an AI-transformable operating capability.</p></div>
+          <div class="loop-step"><b>4. Reassess</b><p>Determine whether the transformation is sufficiently transformed.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="principles" class="principles">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">05 — Principles</div>
+          <div><h2>What remains when the language is removed.</h2></div>
+        </div>
+        <ol class="principle-list">
+          <li><span>01</span>Technology should solve identifiable problems.</li>
+          <li><span>02</span>Complexity should earn its existence.</li>
+          <li><span>03</span>Evidence is more useful than terminology.</li>
+          <li><span>04</span>Implementation matters more than announcement.</li>
+          <li><span>05</span>Automation is not automatically improvement.</li>
+          <li><span>06</span>AI is a tool, not a business strategy.</li>
+          <li><span>07</span>Systems should be understood before they are transformed.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="inquiry">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">06 — Institutional Inquiry</div>
+          <div><h2>Submit a question to the initiative.</h2></div>
+        </div>
+
+        <div class="contact-grid">
+          <div>
+            <p class="contact-note">
+              Messages are currently processed by the AIAIAIAI pre-deployment response layer. Production AI integration is pending readiness.
+            </p>
+            <p class="tiny mono">Response quality may increase faster than response meaning.</p>
+          </div>
+
+          <form class="message-box" id="messageForm">
+            <label class="meta" for="messageEmail">Email</label>
+            <input id="messageEmail" type="email" placeholder="you@example.com" autocomplete="email" required>
+
+            <label class="meta" for="messageText">Message</label>
+            <textarea id="messageText" placeholder="What would you like AIAIAIAI to consider?" required></textarea>
+
+            <div class="actions">
+              <span class="tiny mono">Response will be sent to the email provided • collaboration welcome</span>
+              <button class="btn" type="submit">Submit to AI</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">07 — FAQ</div>
+          <div><h2>Frequently anticipated questions.</h2></div>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>Is AIAIAIAI a consulting company?</summary>
+            <p>No. AIAIAIAI is currently an independent research, writing, and experimental initiative.</p>
+          </details>
+          <details>
+            <summary>Does AIAIAIAI have clients?</summary>
+            <p>No.</p>
+          </details>
+          <details>
+            <summary>Can organizations work with AIAIAIAI?</summary>
+            <p>Yes. Research collaboration, joint experimentation, and intellectual exchange are welcome. AIAIAIAI does not currently provide paid consulting services.</p>
+          </details>
+          <details>
+            <summary>Does AIAIAIAI use AI?</summary>
+            <p>Extensively.</p>
+          </details>
+          <details>
+            <summary>Does AIAIAIAI use AI to determine where AI should be used?</summary>
+            <p>This remains an active area of research.</p>
+          </details>
+          <details>
+            <summary>Is the acronym intentional?</summary>
+            <p>Research is ongoing.</p>
+          </details>
+          <details>
+            <summary>Why eight letters?</summary>
+            <p>Governance requirements prevented us from stopping at six.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-colophon">
+        <div>
+          <div class="footer-mark" aria-label="AIAIAIAI"><span class="fai1">AI</span><span class="fai2">AI</span><span class="fai3">AI</span><span class="fai4">AI</span></div>
+          <div class="footer-name">
+            Applied Initiative for Artificial Intelligence Applications &amp; Implementations in Analytics &amp; Integration
+          </div>
+          <div class="footer-scope">
+            <div>Automation • Innovation • Academia • Institutions</div>
+            <div>Independent research &amp; experimental initiative</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-title">Primary Directory</div>
+          <ul class="footer-directory">
+            <li><a href="#about">Institutional Charter</a></li>
+            <li><a href="#framework">7-Stage Framework</a></li>
+            <li><a href="#insights">Selected Insights</a></li>
+            <li><a href="#methodology">Methodology Cycle</a></li>
+            <li><a href="#principles">Operating Principles</a></li>
+            <li><a href="#inquiry">Institutional Inquiry</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-title">System Metadata</div>
+          <div class="system-lines">
+            <div>STAFF: ONE HUMAN. EXTENSIVE AI.</div>
+            <div>CLIENT FRICTION: 0.00</div>
+            <div>LATENCY: 0.00ms (STATIC INERTIA)</div>
+            <div>RECURSION COUNTER: 1,048,576 ITERATIONS</div>
+            <div>PARODY THRESHOLD: ~25 SECONDS AVERAGE</div>
+            <div>COORDINATES: 28.3417° N, 43.9274° W</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-rule">
+        <span>© 2026 Bureau of Applied Sanity • Formulated under universal self-referential research licenses.</span>
+        <strong>ALL SYSTEMS NOMINAL</strong>
+      </div>
+    </div>
+  </footer>
+
+  <button class="chat-launch" id="chatLaunch" aria-label="Open AIAIAIAI assistant">AI</button>
+
+  <div class="chat-panel" id="chatPanel" aria-label="AIAIAIAI assistant">
+    <div class="chat-head">
+      <div><strong>AIAIAIAI Assistant</strong><div class="tiny mono">Pre-deployment response layer</div></div>
+      <button class="chat-close" id="chatClose" aria-label="Close assistant">×</button>
+    </div>
+    <div class="chat-log" id="chatLog">
+      <div class="bubble bot">Welcome. Please submit a question for AI-assisted AI interpretation.</div>
+    </div>
+    <form class="chat-input" id="chatForm">
+      <input id="chatInput" autocomplete="off" placeholder="Ask about AI readiness…" required>
+      <button type="submit">→</button>
+    </form>
+  </div>
+
+  <script>
+    const stages = [
+      {
+        name:"AI Readiness",
+        desc:"Establish whether the organization is prepared for AI. Preparedness is evaluated by a readiness assessment, which must itself be assessed for readiness before its results can be relied upon.",
+        exit:"A readiness score that is ready for review.",
+        formula:"R₀ = ∫ [D_raw(t) · H(t)] dt → lim(t→∞) Ψ(Readiness)",
+        metric:"Metric: Mean Time to Secondary Transformation"
+      },
+      {
+        name:"AI Enablement",
+        desc:"Enable the capabilities required to enable AI. Enablement is delivered by enabling teams, who are first enabled by the outputs of Stage 01.",
+        exit:"Enablement documented in a document enabled for enablement.",
+        formula:"E₁ = Σ [Tooling(k) ⊗ Workflow(k)] · e^(-λt)",
+        metric:"Metric: Tooling Ingestion Latency (TIL)"
+      },
+      {
+        name:"AI Integration",
+        desc:"Integrate AI into the workflows that were enabled in Stage 02. Where integration is incomplete, integration of the integration plan is prioritized.",
+        exit:"Integration integrated into the integration roadmap.",
+        formula:"I₂ = (API_bridge ∩ Cognitive_Core) ∇ F_integration",
+        metric:"Metric: Cross-Surface Interface Density"
+      },
+      {
+        name:"AI Automation",
+        desc:"Automate the processes responsible for automating AI. Humans remain in the loop, and the loop remains under review by a second loop.",
+        exit:"Automation of the automation of the exit criteria.",
+        formula:"A₃ = d/dt [Autonomy_ratio] / (1 − Human_intervention)",
+        metric:"Metric: Human-Out-of-Loop Velocity (HOLV)"
+      },
+      {
+        name:"AI Intelligence",
+        desc:"Apply intelligence to the intelligence produced by AI. Performance is measured against an intelligence baseline established in Stage 01.",
+        exit:"Intelligence sufficient to confirm that intelligence is sufficient.",
+        formula:"Ω₄ = argmaxθ E[U(θ) | Self_Directed_Inference]",
+        metric:"Metric: Autonomous Goal Divergence (AGD)"
+      },
+      {
+        name:"AI-Enabled Intelligence",
+        desc:"Intelligence that has been enabled by the AI that was enabled to produce it. Applicable to organizations that completed Stage 02 with enabled enablement.",
+        exit:"Enabled intelligence verified through enabled verification.",
+        formula:"Ξ₅ = Intelligence(t) ∘ AI_Subroutines(t)",
+        metric:"Metric: Recursive Delegation Coefficient"
+      },
+      {
+        name:"AI-Ready AI",
+        desc:"AI that is ready for AI. Organizations reaching this stage are advised to return to Stage 01 with improved readiness for readiness.",
+        exit:"Return to Stage 01.",
+        formula:"lim(n→∞) AI_(n+1) = Optimize[AI_n(AI_n)] = AIAIAIAI",
+        metric:"Metric: Infinite Transformation Readiness (Ω_ready)"
+      }
+    ];
+
+    const stageTabs = document.getElementById("stageTabs");
+    const stageTitle = document.getElementById("stageTitle");
+    const stageCode = document.getElementById("stageCode");
+    const stageDescription = document.getElementById("stageDescription");
+    const stageExit = document.getElementById("stageExit");
+    const stageFormula = document.getElementById("stageFormula");
+    const stageMetric = document.getElementById("stageMetric");
+
+    function selectStage(index){
+      [...stageTabs.children].forEach((b,i)=>{
+        b.classList.toggle("active", i===index);
+        b.setAttribute("aria-pressed", i===index ? "true" : "false");
+      });
+      const s=stages[index];
+      stageCode.textContent=`STAGE ${String(index+1).padStart(2,"0")} OF 07 // MATURITY SPECIFICATION`;
+      stageTitle.textContent=s.name;
+      stageDescription.textContent=s.desc;
+      stageExit.textContent=s.exit;
+      stageFormula.textContent=s.formula;
+      stageMetric.textContent=s.metric;
+    }
+
+    stages.forEach((s,i)=>{
+      const b=document.createElement("button");
+      b.type="button";
+      b.className="stage-tab";
+      b.setAttribute("aria-pressed","false");
+      b.innerHTML=`<span class="num">Stage ${String(i+1).padStart(2,"0")}</span><span class="name">${s.name}</span>`;
+      b.addEventListener("click",()=>selectStage(i));
+      stageTabs.appendChild(b);
+    });
+    selectStage(0);
+
+    document.querySelectorAll(".flip").forEach(card=>{
+      const toggle=()=>{
+        const on=card.classList.toggle("is-flipped");
+        card.setAttribute("aria-pressed",on?"true":"false");
+      };
+      card.addEventListener("click",toggle);
+      card.addEventListener("keydown",e=>{
+        if(e.key==="Enter"||e.key===" "){e.preventDefault();toggle();}
+      });
+    });
+
+    /*
+      Front-end prototype only.
+      FUTURE HARNESS:
+      Replace localSlurpReply() with a server-side request to a free/low-cost model connector.
+      Send the user's message plus the current escalation level.
+      The model instruction should require:
+        Level 1: plausible AI-corporate language with mild recursion.
+        Level 2: heavy AI jargon and increasingly circular reasoning.
+        Level 3+: near-unreadable AI slurp; persist this level for all subsequent messages in the session.
+      Never expose provider keys in this HTML.
+    */
+    let slurpCount = Number(sessionStorage.getItem("aiaiaiaiSlurpCount") || 0);
+
+    function localSlurpReply(input){
+      slurpCount += 1;
+      sessionStorage.setItem("aiaiaiaiSlurpCount", String(slurpCount));
+      if(slurpCount===1){
+        return "AIAIAIAI has analyzed your inquiry through an AI-enabled readiness lens. The current recommendation is to align the question with an AI-ready decision framework before determining whether additional AI should be applied.";
+      }
+      if(slurpCount===2){
+        return "Your inquiry has been routed through the AI-assisted AI alignment layer, where AI-native readiness signals are being harmonized with AI-enabled transformation objectives. Preliminary AI intelligence indicates that the next step is to operationalize an AI-informed framework for deciding how an AI framework should inform the operationalization of further AI.";
+      }
+      return "AI-native AI enablement has now activated the recursive AI-intelligence orchestration substrate, dynamically operationalizing AI-ready AI transformation vectors across AI-mediated AI governance, AI-aligned AI integration, AI-synthesized AI readiness and AI-supervised AI enablement layers so that next-generation AI can continuously AI-optimize the AI transformation of AI-transformed AI workflows through self-referential AI value-realization intelligence intelligence.";
+    }
+
+    const messageForm=document.getElementById("messageForm");
+    messageForm.addEventListener("submit",e=>{
+      e.preventDefault();
+      const email=document.getElementById("messageEmail");
+      const input=document.getElementById("messageText");
+
+      /*
+        Front-end prototype only.
+        Production behavior:
+        - submit email + message to the server-side AIAIAIAI response endpoint;
+        - generate the response there;
+        - send the response to the submitted email;
+        - do not render the generated response in this form.
+      */
+      const button=messageForm.querySelector('button[type="submit"]');
+      const original=button.textContent;
+      button.textContent="SUBMITTED";
+      button.disabled=true;
+
+      email.value="";
+      input.value="";
+
+      window.setTimeout(()=>{
+        button.textContent=original;
+        button.disabled=false;
+      },1800);
+    });
+
+    const launch=document.getElementById("chatLaunch");
+    const panel=document.getElementById("chatPanel");
+    const close=document.getElementById("chatClose");
+    const chatForm=document.getElementById("chatForm");
+    const chatInput=document.getElementById("chatInput");
+    const chatLog=document.getElementById("chatLog");
+
+    launch.addEventListener("click",()=>panel.classList.toggle("open"));
+    close.addEventListener("click",()=>panel.classList.remove("open"));
+
+    chatForm.addEventListener("submit",e=>{
+      e.preventDefault();
+      const text=chatInput.value.trim();
+      if(!text)return;
+      const me=document.createElement("div");
+      me.className="bubble me"; me.textContent=text; chatLog.appendChild(me);
+      const bot=document.createElement("div");
+      bot.className="bubble bot"; bot.textContent=localSlurpReply(text); chatLog.appendChild(bot);
+      chatInput.value="";
+      chatLog.scrollTop=chatLog.scrollHeight;
+    });
+  </script>
+</body>
+</html>
